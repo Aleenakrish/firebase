@@ -17,6 +17,7 @@ class _HomepageState extends State<Homepage> {
             Container(
               height: 100,
               width: MediaQuery.of(context).size.width,
+              color: Colors.black,
             )
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -8,8 +9,15 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
+  TextEditingController _email =TextEditingController();
+  TextEditingController _password =TextEditingController();
   List ls=[];
   bool ckeck=false;
+
+  Future login()async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(email:_email.text.trim(), password: _password.text.trim());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +52,10 @@ class _LoginpageState extends State<Loginpage> {
                     
                   ),
                   child: TextField(
+                    controller: _email,
                     decoration: InputDecoration(
                      
-                      labelText: "UserName",
+                      labelText: "Email",
                       labelStyle: TextStyle(color: Colors.grey),
                       border: InputBorder.none,
                     ),
@@ -70,6 +79,7 @@ class _LoginpageState extends State<Loginpage> {
                     
                   ),
                   child: TextField(
+                    controller: _password,
                     decoration: InputDecoration(
                      
                       labelText: "Password",
@@ -116,7 +126,9 @@ class _LoginpageState extends State<Loginpage> {
                 borderRadius: BorderRadius.circular(10),
                 color:  const Color.fromARGB(255, 95, 127, 197)
               ),
-              child: TextButton(onPressed: (){},
+              child: TextButton(onPressed: (){
+                login();
+              },
                child: Text("Login",style: TextStyle(
                 color: Colors.white
                ),)),

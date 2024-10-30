@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138873088366",
+    "project_id": "crudefirebase-207d2",
+    "storage_bucket": "crudefirebase-207d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138873088366:android:bdc3f353fa3a7d3a2f797f",
+        "android_client_info": {
+          "package_name": "com.android.applica"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVkm8sB5a78iIsGxYUhAIQN4-SaCZKKQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
