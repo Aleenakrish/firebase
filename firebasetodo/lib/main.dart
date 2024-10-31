@@ -14,7 +14,7 @@ await Firebase.initializeApp(
 );
   runApp(
     MaterialApp(
-      home: Mainpage()
+      home: Homepage()
     )
   );
 }
