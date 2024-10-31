@@ -14,7 +14,11 @@ await Firebase.initializeApp(
 );
   runApp(
     MaterialApp(
-      home: Homepage()
+    
+      home: Mainpage(),
+      // routes: {
+      //   "signuppage":(context)=>Signuppage()
+      // },
     )
   );
 }
