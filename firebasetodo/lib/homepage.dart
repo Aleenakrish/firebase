@@ -30,10 +30,10 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(left: 20),
+            // margin: EdgeInsets.only(left: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              // mainAxisAlignment: MainAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
                     child: TextField(
@@ -46,35 +46,62 @@ class _HomepageState extends State<Homepage> {
                         addTodo();
                       },
                       child: Text("ADD")),
-                )
+                ),
               ],
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
           Expanded(
-              child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(top: 5, left: 10, right: 10),
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 5,
-                                color: Colors.grey,
-                                offset: Offset(5, 5))
-                          ]),
-                      child: ListTile(
-                          // leading: Text(index.toString()),
-                          // title: Text(ls[index].toString()),
-                          ),
-                    );
-                  })),
+              child: StreamBuilder(
+            stream: Todos.orderBy("Task").snapshots(),
+            builder: (context, snapshot) {
+              print(snapshot.data!.docs.length);
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  final DocumentSnapshot Todossnapshot =
+                      snapshot.data!.docs[index];
+                  return ListTile(
+                    title: Text(Todossnapshot["Task"].toString()),
+                    onTap: () {
+                      print(Todossnapshot.id);
+                      List ls = [
+                        Todossnapshot.id,
+                        Todossnapshot['Task'].toString()
+                      ];
+                      Navigator.pushNamed(context, "update", arguments: ls);
+                    },
+                   
+                  );
+                },
+              );
+            },
+          ))
+
+          // SizedBox
+          //   height: 20,
+          // ),
+          // Expanded(
+          //     child: ListView.builder(
+          //         itemCount: 3,
+          //         itemBuilder: (context, index) {
+          //           return Container(
+          //             margin: EdgeInsets.only(top: 5, left: 10, right: 10),
+          //             height: 60,
+          //             decoration: BoxDecoration(
+          //                 borderRadius: BorderRadius.circular(5),
+          //                 color: Colors.white,
+          //                 boxShadow: [
+          //                   BoxShadow(
+          //                       blurRadius: 5,
+          //                       color: Colors.grey,
+          //                       offset: Offset(5, 5))
+          //                 ]),
+          //             child: ListTile(
+          //                 // leading: Text(index.toString()),
+          //                 // title: Text(ls[index].toString()),
+          //                 ),
+          //           );
+          //         })),
         ],
       ),
     );

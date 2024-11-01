@@ -2,7 +2,7 @@ import 'package:firebasetodo/homepage.dart';
 import 'package:firebasetodo/loginpage.dart';
 import 'package:firebasetodo/mainpage.dart';
 import 'package:firebasetodo/signuppage.dart';
-
+import 'package:firebasetodo/update.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,9 +16,10 @@ await Firebase.initializeApp(
     MaterialApp(
     
       home: Mainpage(),
-      // routes: {
-      //   "signuppage":(context)=>Signuppage()
-      // },
+      routes: {
+        "signuppage":(context)=>Signuppage(),
+        "update":(context)=>Update()
+      },
     )
   );
 }
