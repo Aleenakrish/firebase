@@ -64,7 +64,11 @@ class _SignuppageState extends State<Signuppage> {
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Password",
-                    labelStyle: TextStyle(color: Colors.red[200])),
+                    labelStyle: TextStyle(color: Colors.red[200]),
+                    suffixIcon: Icon(Icons.remove_red_eye_rounded,
+                    size: 20,
+                    color: const Color.fromARGB(255, 206, 62, 51),)
+                    ),
               ),
             ),
             Container(
@@ -83,7 +87,11 @@ class _SignuppageState extends State<Signuppage> {
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Cpassword",
-                    labelStyle: TextStyle(color: Colors.red[200])),
+                    labelStyle: TextStyle(color: Colors.red[200]),
+                    suffixIcon: Icon(Icons.remove_red_eye_rounded,
+                    size: 20,
+                    color: const Color.fromARGB(255, 206, 62, 51),)
+                    ),
               ),
             ),
             SizedBox(
@@ -116,7 +124,8 @@ class _SignuppageState extends State<Signuppage> {
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 30),
-                  child: TextButton(onPressed: () {}, child: Text("Login")),
+                  child: TextButton(onPressed: () {}, child: Text("Login",
+                  style: TextStyle(color: Colors.red),)),
                 )
               ],
             ),
@@ -147,10 +156,15 @@ class _SignuppageState extends State<Signuppage> {
               height: 20,
             ),
             Container(
+              height: 50,
+              margin: EdgeInsets.only(left: 70,right: 70),
+               decoration: BoxDecoration(
+                      border: Border.all(color: const Color.fromARGB(255, 204, 34, 22))
+                    ),
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 110, top: 40),
+                    margin: EdgeInsets.only(left: 110),
                     height: 40,
                     width: 40,
                     decoration: BoxDecoration(
@@ -162,9 +176,10 @@ class _SignuppageState extends State<Signuppage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10, top: 40),
+                    margin: EdgeInsets.only(left: 10, ),
+                   
                     child: Text(
-                      "Sign ip with Google",
+                      "Sign Up with Google",
                       style: TextStyle(fontSize: 15),
                     ),
                   )
