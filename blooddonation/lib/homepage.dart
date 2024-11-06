@@ -47,7 +47,7 @@ class _HomepageState extends State<Homepage> {
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 5,
-                    color: const Color.fromARGB(255, 196, 79, 71),
+                    color: Colors.grey,
                     // offset: Offset(5, 5)
                   )
                 ]),
@@ -110,7 +110,7 @@ class _HomepageState extends State<Homepage> {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 5,
-                        color: const Color.fromARGB(255, 207, 102, 95),
+                        color: Colors.grey,
                       )
                     ]),
                 child: Column(
@@ -121,7 +121,7 @@ class _HomepageState extends State<Homepage> {
                         child: Icon(
                           Icons.search,
                           size: 38,
-                          color: Colors.black,
+                          color: Colors.red,
                         ),
                       ),
                     ),
@@ -147,29 +147,39 @@ class _HomepageState extends State<Homepage> {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 5,
-                        color: const Color.fromARGB(255, 207, 102, 95),
+                        color: Colors.grey,
                       )
                     ]),
                 child: Column(
                   children: [
                     Container(
+                      height: 60,
+                      width: 80,
                       child: TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.search,
-                          size: 38,
-                          color: Colors.black,
-                        ),
-                      ),
+                          onPressed: () {},
+                          child: Image.asset("./images/ic.jpg")),
                     ),
-                    Container(
-                      child: Text(
-                        "Find Donors",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 219, 46, 34),
+                    Column(
+                      children: [
+                        Container(
+                          child: Text(
+                            "Request for",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 219, 46, 34),
+                            ),
+                          ),
                         ),
-                      ),
+                        Container(
+                          child: Text(
+                            "blood",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 219, 46, 34),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
@@ -184,24 +194,21 @@ class _HomepageState extends State<Homepage> {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 5,
-                        color: const Color.fromARGB(255, 207, 102, 95),
+                        color: Colors.grey,
                       )
                     ]),
                 child: Column(
                   children: [
                     Container(
+                      height: 70,
+                      width: 130,
                       child: TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.search,
-                          size: 38,
-                          color: Colors.black,
-                        ),
-                      ),
+                          onPressed: () {},
+                          child: Image.asset("./images/r.png")),
                     ),
                     Container(
                       child: Text(
-                        "Find Donors",
+                        "Campains",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: const Color.fromARGB(255, 219, 46, 34),
@@ -213,425 +220,169 @@ class _HomepageState extends State<Homepage> {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 20),
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: const Color.fromARGB(255, 207, 102, 95),
-                      )
-                    ]),
-                child: Column(
-                  children: [
-                    Container(
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.search,
-                          size: 38,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Find Donors",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 219, 46, 34),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                // margin: EdgeInsets.only(left: 50),
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: const Color.fromARGB(255, 207, 102, 95),
-                      )
-                    ]),
-                child: Column(
-                  children: [
-                    Container(
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.search,
-                          size: 38,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Find Donors",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 219, 46, 34),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 20),
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: const Color.fromARGB(255, 207, 102, 95),
-                      )
-                    ]),
-                child: Column(
-                  children: [
-                    Container(
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.search,
-                          size: 38,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Find Donors",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 219, 46, 34),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+         
           SizedBox(
             height: 20,
           ),
           Container(
-            margin: EdgeInsets.only(left: 10, right: 10),
-            height: 120,
-            width: 100,
-            decoration: BoxDecoration(
-                border:
-                    Border.all(color: const Color.fromARGB(255, 204, 34, 22)),
-                borderRadius: BorderRadius.circular(10)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            margin: EdgeInsets.only(left: 10),
+            child: Text(
+              "Donation Request",
+              style: TextStyle(fontSize: 17),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 400,
+            width: 200,
+            child: ListView(
               children: [
                 Container(
-                  // height: ,
-                  margin: EdgeInsets.only(top: 5, left: 10),
-                  child: Text(
-                    "Blood Needed",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  height: 90,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 2,
+                          color: Colors.grey,
+                          // offset: Offset(5, 5)
+                        )
+                      ]),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: const Color.fromARGB(255, 218, 217, 217),
+                        ),
+                        child: Icon(
+                          Icons.perm_identity,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  height: 90,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 2,
+                          color: Colors.grey,
+                          // offset: Offset(5, 5)
+                        )
+                      ]),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: const Color.fromARGB(255, 218, 217, 217),
+                        ),
+                        child: Icon(
+                          Icons.perm_identity,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  height: 90,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 2,
+                          color: Colors.grey,
+                          // offset: Offset(5, 5)
+                        )
+                      ]),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: const Color.fromARGB(255, 218, 217, 217),
+                        ),
+                        child: Icon(
+                          Icons.perm_identity,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 SizedBox(
                   height: 7,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.water_drop_sharp,
-                            color: Colors.red,
-                            size: 50,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Text(
-                            "B+",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  height: 90,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 2,
+                          color: Colors.grey,
+                          // offset: Offset(5, 5)
                         )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.water_drop_sharp,
-                            color: Colors.red,
-                            size: 50,
-                          ),
+                      ]),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: const Color.fromARGB(255, 218, 217, 217),
                         ),
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Text(
-                            "O+",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.water_drop_sharp,
-                            color: Colors.red,
-                            size: 50,
-                          ),
+                        child: Icon(
+                          Icons.perm_identity,
+                          size: 50,
+                          color: Colors.white,
                         ),
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Text(
-                            "AB+",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.water_drop_sharp,
-                            color: Colors.red,
-                            size: 50,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Text(
-                            "O-",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.water_drop_sharp,
-                            color: Colors.red,
-                            size: 50,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Text(
-                            "AB-",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.water_drop_sharp,
-                            color: Colors.red,
-                            size: 50,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Text(
-                            "A+",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                )
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-          //   SizedBox(
-          //     height: 10,
-          //   ),
-          //   Container(
-          //     margin: EdgeInsets.only(left: 10),
-          //     child: Text(
-          //       "Donation Request",
-          //       style: TextStyle(fontSize: 16),
-          //     ),
-          //   ),
-          //   SizedBox(
-          //     height: 10,
-          //   ),
-          //   Container(
-          //     height: 300,
-          //     width: 200,
-          //     child: ListView(
-          //       children: [
-          //         Container(
-          //           margin: EdgeInsets.only(left: 10, right: 10),
-          //           height: 90,
-          //           width: 150,
-          //           decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(15),
-          //               color: Colors.white,
-          //               boxShadow: [
-          //                 BoxShadow(
-          //                   blurRadius: 2,
-          //                   color: Colors.red,
-          //                   // offset: Offset(5, 5)
-          //                 )
-          //               ]),
-          //           child: Row(
-          //             children: [
-          //               Container(
-          //                 margin: EdgeInsets.only(left: 5),
-          //                 height: 80,
-          //                 width: 80,
-          //                 decoration: BoxDecoration(
-          //                   borderRadius: BorderRadius.circular(15),
-          //                   color: Colors.grey,
-          //                 ),
-          //                 child: Icon(
-          //                   Icons.perm_identity,
-          //                   size: 50,
-          //                   color: Colors.white,
-          //                 ),
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //         SizedBox(
-          //           height: 5,
-          //         ),
-          //         Container(
-          //           margin: EdgeInsets.only(left: 10, right: 10),
-          //           height: 90,
-          //           width: 150,
-          //           decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(15),
-          //               color: Colors.white,
-          //               boxShadow: [
-          //                 BoxShadow(
-          //                   blurRadius: 2,
-          //                   color: Colors.red,
-          //                   // offset: Offset(5, 5)
-          //                 )
-          //               ]),
-          //           child: Row(
-          //             children: [
-          //               Container(
-          //                 margin: EdgeInsets.only(left: 5),
-          //                 height: 80,
-          //                 width: 80,
-          //                 decoration: BoxDecoration(
-          //                   borderRadius: BorderRadius.circular(15),
-          //                   color: Colors.grey,
-          //                 ),
-          //                 child: Icon(
-          //                   Icons.perm_identity,
-          //                   size: 50,
-          //                   color: Colors.white,
-          //                 ),
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //         SizedBox(
-          //           height: 5,
-          //         ),
-          //         Container(
-          //           margin: EdgeInsets.only(left: 10, right: 10),
-          //           height: 90,
-          //           width: 150,
-          //           decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(15),
-          //               color: Colors.white,
-          //               boxShadow: [
-          //                 BoxShadow(blurRadius: 2, color: Colors.red
-          //                     // offset: Offset(5, 5)
-          //                     )
-          //               ]),
-          //           child: Row(
-          //             children: [
-          //               Container(
-          //                 margin: EdgeInsets.only(left: 5),
-          //                 height: 80,
-          //                 width: 80,
-          //                 decoration: BoxDecoration(
-          //                   borderRadius: BorderRadius.circular(15),
-          //                   color: Colors.grey,
-          //                 ),
-          //                 child: Icon(
-          //                   Icons.perm_identity,
-          //                   size: 50,
-          //                   color: Colors.white,
-          //                 ),
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //         SizedBox(
-          //           height: 7,
-          //         ),
-          //         Container(
-          //           margin: EdgeInsets.only(left: 10, right: 10),
-          //           height: 90,
-          //           width: 150,
-          //           decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(15),
-          //               color: Colors.white,
-          //               boxShadow: [
-          //                 BoxShadow(blurRadius: 2, color: Colors.red
-          //                     // offset: Offset(5, 5)
-          //                     )
-          //               ]),
-          //           child: Row(
-          //             children: [
-          //               Container(
-          //                 margin: EdgeInsets.only(left: 5),
-          //                 height: 80,
-          //                 width: 80,
-          //                 decoration: BoxDecoration(
-          //                   borderRadius: BorderRadius.circular(15),
-          //                   color: Colors.grey,
-          //                 ),
-          //                 child: Icon(
-          //                   Icons.perm_identity,
-          //                   size: 50,
-          //                   color: Colors.white,
-          //                 ),
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   )
+          )
         ]),
       ),
     );

@@ -21,10 +21,10 @@ class _FirstpageState extends State<Firstpage> {
               child: Image.asset("./images/log.jpg"),
             ),
             SizedBox(
-              height: 50,
+              height: 20,
             ),
             Container(
-              margin: EdgeInsets.only(left: 50, right: 50),
+              margin: EdgeInsets.only(left: 30, right: 30),
               height: 50,
               width: 300,
               child: TextButton(
@@ -47,7 +47,7 @@ class _FirstpageState extends State<Firstpage> {
               height: 20,
             ),
             Container(
-              margin: EdgeInsets.only(left: 50, right: 50),
+              margin: EdgeInsets.only(left: 30, right: 30),
               height: 50,
               width: 300,
               decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class _FirstpageState extends State<Firstpage> {
                   )),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Center(
               child: Container(
@@ -83,7 +83,7 @@ class _FirstpageState extends State<Firstpage> {
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 150),
+                  margin: EdgeInsets.only(left: 130),
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(

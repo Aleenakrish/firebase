@@ -57,7 +57,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCVkm8sB5a78iIsGxYUhAIQN4-SaCZKKQ0',
-    appId: '1:138873088366:android:c029993e45556ba62f797f',
+    appId: '1:138873088366:android:b35249a6b237d1a02f797f',
     messagingSenderId: '138873088366',
     projectId: 'crudefirebase-207d2',
     storageBucket: 'crudefirebase-207d2.firebasestorage.app',
@@ -71,4 +71,5 @@ class DefaultFirebaseOptions {
     authDomain: 'crudefirebase-207d2.firebaseapp.com',
     storageBucket: 'crudefirebase-207d2.firebasestorage.app',
   );
+
 }

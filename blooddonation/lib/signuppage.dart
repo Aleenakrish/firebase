@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Signuppage extends StatefulWidget {
@@ -8,6 +9,15 @@ class Signuppage extends StatefulWidget {
 }
 
 class _SignuppageState extends State<Signuppage> {
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  TextEditingController _cpassword = TextEditingController();
+
+  Future signup() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _email.text.trim(), password: _password.text.trim());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +52,7 @@ class _SignuppageState extends State<Signuppage> {
                         color: Colors.grey, blurRadius: 5, offset: Offset(5, 5))
                   ]),
               child: TextField(
+                controller: _email,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Email",
@@ -61,14 +72,16 @@ class _SignuppageState extends State<Signuppage> {
                         color: Colors.grey, blurRadius: 5, offset: Offset(5, 5))
                   ]),
               child: TextField(
+                controller: _password,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Password",
                     labelStyle: TextStyle(color: Colors.red[200]),
-                    suffixIcon: Icon(Icons.remove_red_eye_rounded,
-                    size: 20,
-                    color: const Color.fromARGB(255, 206, 62, 51),)
-                    ),
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye_rounded,
+                      size: 20,
+                      color: const Color.fromARGB(255, 206, 62, 51),
+                    )),
               ),
             ),
             Container(
@@ -84,14 +97,16 @@ class _SignuppageState extends State<Signuppage> {
                         color: Colors.grey, blurRadius: 5, offset: Offset(5, 5))
                   ]),
               child: TextField(
+                controller: _cpassword,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Cpassword",
                     labelStyle: TextStyle(color: Colors.red[200]),
-                    suffixIcon: Icon(Icons.remove_red_eye_rounded,
-                    size: 20,
-                    color: const Color.fromARGB(255, 206, 62, 51),)
-                    ),
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye_rounded,
+                      size: 20,
+                      color: const Color.fromARGB(255, 206, 62, 51),
+                    )),
               ),
             ),
             SizedBox(
@@ -109,7 +124,13 @@ class _SignuppageState extends State<Signuppage> {
                         blurRadius: 5, color: Colors.grey, offset: Offset(3, 3))
                   ]),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_password.text == _cpassword.text) {
+                          signup();
+                        } else {
+                          print("incorrect");
+                        }
+                  },
                   child: Text(
                     "Sign Up",
                     style: TextStyle(color: Colors.white),
@@ -124,8 +145,14 @@ class _SignuppageState extends State<Signuppage> {
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 30),
-                  child: TextButton(onPressed: () {}, child: Text("Login",
-                  style: TextStyle(color: Colors.red),)),
+                  child: TextButton(
+                      onPressed: () {
+                        
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(color: Colors.red),
+                      )),
                 )
               ],
             ),
@@ -157,14 +184,14 @@ class _SignuppageState extends State<Signuppage> {
             ),
             Container(
               height: 50,
-              margin: EdgeInsets.only(left: 70,right: 70),
-               decoration: BoxDecoration(
-                      border: Border.all(color: const Color.fromARGB(255, 204, 34, 22))
-                    ),
+              margin: EdgeInsets.only(left: 70, right: 70),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 204, 34, 22))),
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 110),
+                    margin: EdgeInsets.only(left: 30),
                     height: 40,
                     width: 40,
                     decoration: BoxDecoration(
@@ -176,8 +203,9 @@ class _SignuppageState extends State<Signuppage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10, ),
-                   
+                    margin: EdgeInsets.only(
+                      left: 10,
+                    ),
                     child: Text(
                       "Sign Up with Google",
                       style: TextStyle(fontSize: 15),
