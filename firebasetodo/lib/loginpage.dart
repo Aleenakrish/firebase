@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -17,6 +18,24 @@ class _LoginpageState extends State<Loginpage> {
   Future login() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _email.text.trim(), password: _password.text.trim());
+  }
+
+  Future signinwithgoogle() async {
+     print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    try {
+      final Firebaseauth = await FirebaseAuth.instance;
+      final googleService = await GoogleSignIn();
+      final googleUser = await googleService.signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final cred = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      final user = await Firebaseauth.signInWithCredential(cred);
+      print(user);
+      print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -92,7 +111,7 @@ class _LoginpageState extends State<Loginpage> {
             Row(
               children: [
                 SizedBox(
-                  width: 75,
+                  width: 10,
                 ),
                 Container(
                   // height: 10,
@@ -109,7 +128,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
 
                 Container(
-                    margin: EdgeInsets.only(top: 20, left: 100),
+                    margin: EdgeInsets.only(top: 20, left: 40),
                     child: TextButton(
                         onPressed: () {},
                         child: Text(
@@ -141,10 +160,20 @@ class _LoginpageState extends State<Loginpage> {
             SizedBox(
               height: 20,
             ),
+            Container(
+              child: TextButton(
+                  onPressed: () {
+                    signinwithgoogle();
+                  },
+                  child: Text("login with")),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 130),
+                  margin: EdgeInsets.only(left: 70),
                   child: Text("Don't have an account?"),
                 ),
                 Container(

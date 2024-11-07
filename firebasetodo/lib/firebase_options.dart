@@ -52,15 +52,15 @@ class DefaultFirebaseOptions {
     messagingSenderId: '138873088366',
     projectId: 'crudefirebase-207d2',
     authDomain: 'crudefirebase-207d2.firebaseapp.com',
-    storageBucket: 'crudefirebase-207d2.appspot.com',
+    storageBucket: 'crudefirebase-207d2.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCVkm8sB5a78iIsGxYUhAIQN4-SaCZKKQ0',
-    appId: '1:138873088366:android:bdc3f353fa3a7d3a2f797f',
+    appId: '1:138873088366:android:a5edb20391358a1c2f797f',
     messagingSenderId: '138873088366',
     projectId: 'crudefirebase-207d2',
-    storageBucket: 'crudefirebase-207d2.appspot.com',
+    storageBucket: 'crudefirebase-207d2.firebasestorage.app',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
@@ -69,6 +69,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '138873088366',
     projectId: 'crudefirebase-207d2',
     authDomain: 'crudefirebase-207d2.firebaseapp.com',
-    storageBucket: 'crudefirebase-207d2.appspot.com',
+    storageBucket: 'crudefirebase-207d2.firebasestorage.app',
   );
+
 }
