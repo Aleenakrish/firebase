@@ -1,3 +1,4 @@
+import 'package:blooddonation/addpage.dart';
 import 'package:blooddonation/donorspage.dart';
 import 'package:blooddonation/firstpage.dart';
 import 'package:blooddonation/homepage.dart';
@@ -15,7 +16,7 @@ void main() async {
   );
 
   runApp(MaterialApp(
-    home: Firstpage(),
+    home: Homepage(),
     routes: {
       "/loginpage": (context) => Loginpage(),
       "/signuppage": (context) => Signuppage(),

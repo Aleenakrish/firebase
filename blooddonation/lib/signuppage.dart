@@ -40,7 +40,7 @@ class _SignuppageState extends State<Signuppage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 50, left: 50, right: 50),
+              margin: EdgeInsets.only(top: 50, left: 30, right: 30),
               padding: EdgeInsets.only(left: 20),
               height: 55,
               width: 300,
@@ -60,7 +60,7 @@ class _SignuppageState extends State<Signuppage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 30, left: 50, right: 50),
+              margin: EdgeInsets.only(top: 30, left: 30, right: 30),
               padding: EdgeInsets.only(left: 20),
               height: 55,
               width: 300,
@@ -85,7 +85,7 @@ class _SignuppageState extends State<Signuppage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 30, left: 50, right: 50),
+              margin: EdgeInsets.only(top: 30, left: 30, right: 30),
               padding: EdgeInsets.only(left: 20),
               height: 55,
               width: 300,
@@ -113,7 +113,7 @@ class _SignuppageState extends State<Signuppage> {
               height: 50,
             ),
             Container(
-              margin: EdgeInsets.only(left: 50, right: 50),
+              margin: EdgeInsets.only(left: 30, right: 30),
               height: 55,
               width: 300,
               decoration: BoxDecoration(
@@ -140,7 +140,7 @@ class _SignuppageState extends State<Signuppage> {
               children: [
                 Container(
                   height: 50,
-                  padding: EdgeInsets.only(left: 90, top: 30),
+                  padding: EdgeInsets.only(left: 65, top: 30),
                   child: Text("Already have an account?"),
                 ),
                 Container(
@@ -162,19 +162,19 @@ class _SignuppageState extends State<Signuppage> {
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 50, top: 40),
+                  margin: EdgeInsets.only(left: 20, top: 20),
                   height: 1,
-                  width: 150,
+                  width: 155,
                   color: Colors.grey,
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5, top: 40),
+                  margin: EdgeInsets.only(left: 5, top: 20),
                   child: Text("OR"),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5, top: 40),
+                  margin: EdgeInsets.only(left: 5, top: 20),
                   height: 1,
-                  width: 150,
+                  width: 155,
                   color: Colors.grey,
                 ),
               ],
@@ -184,24 +184,21 @@ class _SignuppageState extends State<Signuppage> {
             ),
             Container(
               height: 50,
-              margin: EdgeInsets.only(left: 70, right: 70),
+              margin: EdgeInsets.only(left: 30, right: 30),
               decoration: BoxDecoration(
                   border: Border.all(
                       color: const Color.fromARGB(255, 204, 34, 22))),
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 30),
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.white),
-                    child: Image.asset(
+                    child: TextButton(onPressed: (){}, child: Image.asset(
                       "./images/google.jpg",
                       fit: BoxFit.cover,
-                    ),
+                    ),),
                   ),
+                 
+                    // child: 
+                  // ),
                   Container(
                     margin: EdgeInsets.only(
                       left: 10,

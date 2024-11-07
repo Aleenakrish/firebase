@@ -19,16 +19,16 @@ class _HomepageState extends State<Homepage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 10, top: 10),
+                  margin: EdgeInsets.only(left: 10, top: 15),
                   child: Icon(
                     Icons.window,
-                    color: Colors.red,
+                    color: Colors.red,size: 35,
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 10, top: 10),
+                  margin: EdgeInsets.only(right: 10, top: 15),
                   child: Icon(
-                    Icons.notifications_outlined,
+                    Icons.notifications_outlined,size: 35,
                   ),
                 ),
               ],
@@ -153,8 +153,8 @@ class _HomepageState extends State<Homepage> {
                 child: Column(
                   children: [
                     Container(
-                      height: 60,
-                      width: 80,
+                      height: 50,
+                      width: 60,
                       child: TextButton(
                           onPressed: () {},
                           child: Image.asset("./images/ic.jpg")),
@@ -228,7 +228,7 @@ class _HomepageState extends State<Homepage> {
             margin: EdgeInsets.only(left: 10),
             child: Text(
               "Donation Request",
-              style: TextStyle(fontSize: 17),
+              style: TextStyle(fontSize: 17,color: Colors.red[900]),
             ),
           ),
           SizedBox(
@@ -239,9 +239,132 @@ class _HomepageState extends State<Homepage> {
             width: 200,
             child: ListView(
               children: [
+                Column(
+                 
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 10,right: 10),
+                      height: 160,
+                     
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                       color: Colors.white,
+                       boxShadow: [
+                        BoxShadow(
+                          blurRadius: 5,
+                          color: Colors.grey
+                        )
+                       ]
+                       ),
+                      child: Column(
+                        children: [
+                          Container(
+                            // margin: EdgeInsets.only(left: 10, right: 10),
+                            height: 100,
+                            width: 360,
+                            
+                            child: Row(
+                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(left: 5,top: 10),
+                                      height: 80,
+                                      width: 80,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(100),
+                                        color: const Color.fromARGB(255, 218, 217, 217),
+                                      ),
+                                      child: Icon(
+                                        Icons.perm_identity,
+                                        size: 50,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    
+                                  ],
+                                ),
+                                Container(
+                                  child:Column(
+                                    children: [
+                                      Container(
+                                        color: Colors.white,
+                                        padding: EdgeInsets.only(top: 20,left: 20),
+                                        child: Text("Muhammed Anan",style: TextStyle(fontSize: 16),),
+                                      ),
+                                      Container(
+                                         color: Colors.white,
+                                        padding: EdgeInsets.only(top: 5,),
+                                        child: Text("Malappuram",style: TextStyle(
+                                          fontSize: 14,color: Colors.grey),),
+                                      ),
+                                    ],
+                                  )
+                                ),
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.only(top: 30,left: 40),
+                                        child: Icon(Icons.phone)),
+                                    ],
+                                  ),
+                                )
+                          
+                              ],
+                            ),
+                            
+                          ),
+                          Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 40,top: 10),
+                                  child: Text("21 August 2024"),
+                                ),
+                                Container(
+                                   padding: EdgeInsets.only(left: 20,top: 10),
+                                  child: Text("|",style: TextStyle(fontSize: 20),),
+                                ),
+                                // Container(
+                                //   child:Icon(Icons.punch_clock) ,
+                                // ),
+                                Container(
+                                   padding: EdgeInsets.only(left: 20,top: 10),
+                                  child: Text("9:00",style: TextStyle(),),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 20,top: 10),
+                                  height: 30,
+                                  width: 80,
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 5,
+                                      color: Colors.grey
+                                    )
+                                  ]
+                                  ),
+                                  // padding: EdgeInsets.only(left: 20,top: 10),
+                                  child: Center(child: Text("Donate")),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  height: 90,
+                  height: 120,
                   width: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -277,7 +400,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  height: 90,
+                  height: 120,
                   width: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -304,52 +427,21 @@ class _HomepageState extends State<Homepage> {
                           size: 50,
                           color: Colors.white,
                         ),
-                      )
+                      ),
+                      // Container(
+                      //   child: ,
+                      // )
+                      
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
-                  height: 90,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 2,
-                          color: Colors.grey,
-                          // offset: Offset(5, 5)
-                        )
-                      ]),
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 5),
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: const Color.fromARGB(255, 218, 217, 217),
-                        ),
-                        child: Icon(
-                          Icons.perm_identity,
-                          size: 50,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
+                  
                 ),
                 SizedBox(
                   height: 7,
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  height: 90,
+                  height: 120,
                   width: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
