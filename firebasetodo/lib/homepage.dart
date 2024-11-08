@@ -14,6 +14,7 @@ class _HomepageState extends State<Homepage> {
       FirebaseFirestore.instance.collection("Todos");
 //  List<dynamic>ls=["hy","hello","hai"];
 
+
   void addTodo() {
     final data = {'Task': _task.text};
     Todos.add(data);
@@ -25,7 +26,7 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(child: Text("HOMEPAGE")),
+        title: Center(child: Text("HOMEPAGE"),),
       ),
       body: Column(
         children: [

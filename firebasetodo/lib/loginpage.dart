@@ -21,7 +21,7 @@ class _LoginpageState extends State<Loginpage> {
   }
 
   Future signinwithgoogle() async {
-     print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    //  print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
     try {
       final Firebaseauth = await FirebaseAuth.instance;
       final googleService = await GoogleSignIn();
@@ -32,7 +32,7 @@ class _LoginpageState extends State<Loginpage> {
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
       final user = await Firebaseauth.signInWithCredential(cred);
       print(user);
-      print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+      // print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
     } catch (e) {
       print(e);
     }
