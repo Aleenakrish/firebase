@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,15 +13,27 @@ class _LoginpageState extends State<Loginpage> {
   bool ischeck = false;
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
+  final CollectionReference user =
+      FirebaseFirestore.instance.collection("user");
 
   Future signin() async {
     UserCredential user = await FirebaseAuth.instance
         .signInWithEmailAndPassword(
             email: _email.text.trim(), password: _password.text.trim());
 
-    // print("///////////////////////");
-    print(user.user!.uid);
     print("///////////////////////");
+    print(user.user!.uid);
+    print(user.user!.displayName);
+    print("///////////////////////");
+    var usname = user.user!.uid;
+    var uid = user.user!.displayName;
+    final Userid = {"usname": uid, "uid": usname};
+
+    print(Userid);
+  }
+
+  Future adduser(usid)async{
+
   }
 
   @override
@@ -114,7 +127,7 @@ class _LoginpageState extends State<Loginpage> {
                       },
                       child: Text(
                         "Forget Password?",
-                        style: TextStyle(color: Colors.blue[800]),
+                        style: TextStyle(color: Colors.green[800]),
                       )),
                 )
               ],
@@ -160,7 +173,7 @@ class _LoginpageState extends State<Loginpage> {
                         },
                         child: Text(
                           "Sign Up",
-                          style: TextStyle(color: Colors.green),
+                          style: TextStyle(color: Colors.green[800]),
                         )),
                   )
                 ],

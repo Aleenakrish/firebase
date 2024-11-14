@@ -18,7 +18,6 @@ class _SignuppageState extends State<Signuppage> {
         email: _email.text.trim(), password: _password.text.trim());
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +29,7 @@ class _SignuppageState extends State<Signuppage> {
         child: ListView(
           children: [
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Container(
               child: Center(
@@ -39,7 +38,7 @@ class _SignuppageState extends State<Signuppage> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 28),
+                      fontSize: 25),
                 ),
               ),
             ),
@@ -155,28 +154,28 @@ class _SignuppageState extends State<Signuppage> {
                       },
                       child: Text(
                         "SIGNIN",
-                        style: TextStyle(color: Colors.green),
+                        style: TextStyle(color: Colors.green[800]),
                       )),
                 )
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 20, top: 20),
+                  margin: EdgeInsets.only(left: 20, top: 10),
                   height: 1,
                   width: 155,
                   color: Colors.grey,
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5, top: 20),
+                  margin: EdgeInsets.only(left: 3, top: 10),
                   child: Text("OR"),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5, top: 20),
+                  margin: EdgeInsets.only(left: 3, top: 10),
                   height: 1,
                   width: 155,
                   color: Colors.grey,
@@ -187,20 +186,27 @@ class _SignuppageState extends State<Signuppage> {
               height: 20,
             ),
             Container(
-              height: 50,
-              margin: EdgeInsets.only(left: 30, right: 30),
+              height: 60,
+              margin: EdgeInsets.only(left: 40, right: 40),
               decoration:
                   BoxDecoration(border: Border.all(color: Colors.black)),
               child: Row(
                 children: [
                   Container(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Image.asset(
-                        "./images/google.jpg",
-                        fit: BoxFit.cover,
-                      ),
+                    height: 100,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    child: TextButton(
+                        onPressed: () {},
+                        child: ClipRRect(
+                          child: Image.asset(
+                            "./images/gl.png",
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(100),
+                        )),
                   ),
 
                   // child:
