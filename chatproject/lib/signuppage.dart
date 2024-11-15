@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Signuppage extends StatefulWidget {
   const Signuppage({super.key});
@@ -16,6 +17,23 @@ class _SignuppageState extends State<Signuppage> {
   Future signup() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _email.text.trim(), password: _password.text.trim());
+  }
+  Future signinwithgoogle() async {
+    print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    try {
+      final Firebaseauth = await FirebaseAuth.instance;
+      final googleService = await GoogleSignIn();
+      final googleUser = await googleService.signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final cred = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      final user = await Firebaseauth.signInWithCredential(cred);
+      print(user);
+      print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -199,7 +217,7 @@ class _SignuppageState extends State<Signuppage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {signinwithgoogle();},
                         child: ClipRRect(
                           child: Image.asset(
                             "./images/gl.png",

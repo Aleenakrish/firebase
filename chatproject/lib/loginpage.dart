@@ -25,16 +25,20 @@ class _LoginpageState extends State<Loginpage> {
     print(user.user!.uid);
     print(user.user!.displayName);
     print("///////////////////////");
-    var usname = user.user!.uid;
-    var uid = user.user!.displayName;
-    final Userid = {"usname": uid, "uid": usname};
+    var username = user.user!.uid;
+    var userid = user.user!.displayName;
+    final Userid = {"uersname": userid, "userid": username};
+    print("//////////////////////////////////////////////");
 
-    print(Userid);
+    print(username);
   }
+   Future adduser(userid,username)async{
+        QuerySnapshot querySnapshot = await user.where('userid',isEqualTo: userid).get();
 
-  Future adduser(usid)async{
-
-  }
+        if(querySnapshot.docs.isEmpty){
+          user.add({"userid":userid,"username":username});
+        }
+      }
 
   @override
   Widget build(BuildContext context) {

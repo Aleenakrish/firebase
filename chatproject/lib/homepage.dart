@@ -29,7 +29,9 @@ class _HomepageState extends State<Homepage> {
             child: Row(
               children: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: ()async {
+                        await FirebaseAuth.instance.signOut();
+                      },
                     icon: Icon(
                       Icons.logout,
                       size: 30,
@@ -44,22 +46,22 @@ class _HomepageState extends State<Homepage> {
       body: Container(
         child: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                    child: TextButton(
-                      onPressed: () async {
-                        await FirebaseAuth.instance.signOut();
-                      },
-                      child: Text(
-                        "signout",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    ),
-              ],
-            )
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.end,
+            //   children: [
+            //     Container(
+            //         child: TextButton(
+            //           onPressed: () async {
+            //             await FirebaseAuth.instance.signOut();
+            //           },
+            //           child: Text(
+            //             "signout",
+            //             style: TextStyle(color: Colors.black),
+            //           ),
+            //         ),
+            //         ),
+            //   ],
+            // )
           ],
         ),
       ),
