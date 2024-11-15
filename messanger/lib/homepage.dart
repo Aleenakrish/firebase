@@ -63,7 +63,7 @@ class _HomepageState extends State<Homepage> {
             Container(
               height: 50,
               width: 100,
-              margin: EdgeInsets.only(left: 430, right: 10, top: 650),
+              margin: EdgeInsets.only(left: 430, right:10,top: 650),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), color: Colors.green),
               child: MaterialButton(
