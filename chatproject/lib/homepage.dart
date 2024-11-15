@@ -63,11 +63,13 @@ class _HomepageState extends State<Homepage> {
             Container(
               height: 50,
               width: 100,
-              margin: EdgeInsets.only(left: 430, right: 10, top: 650),
+              margin: EdgeInsets.only(left: 270, right: 10, top: 400),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), color: Colors.green),
               child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "userlist");
+                  },
                   child: Icon(
                     Icons.add_comment_sharp,
                     color: Colors.white,

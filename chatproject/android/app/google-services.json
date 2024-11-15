@@ -167,6 +167,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "138873088366-to0maljlrq76l9p80ddmjq5bbvrh8usd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatproject",
+            "certificate_hash": "6cddbc16d8ff4f8a8cfc5372db062e09f1a12d34"
+          }
+        },
+        {
           "client_id": "138873088366-39scnkb3s78sl57s4dr755o2g9id8ci8.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -203,6 +211,35 @@
             "certificate_hash": "0a6853d7abe2cbdebf96cd8b96f0e7aa1055e357"
           }
         },
+        {
+          "client_id": "138873088366-39scnkb3s78sl57s4dr755o2g9id8ci8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVkm8sB5a78iIsGxYUhAIQN4-SaCZKKQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138873088366-39scnkb3s78sl57s4dr755o2g9id8ci8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138873088366:android:7911069b82bee2f32f797f",
+        "android_client_info": {
+          "package_name": "com.example.messanger"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "138873088366-39scnkb3s78sl57s4dr755o2g9id8ci8.apps.googleusercontent.com",
           "client_type": 3
