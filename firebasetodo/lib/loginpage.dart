@@ -21,7 +21,7 @@ class _LoginpageState extends State<Loginpage> {
   }
 
   Future signinwithgoogle() async {
-    //  print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
     try {
       final Firebaseauth = await FirebaseAuth.instance;
       final googleService = await GoogleSignIn();
@@ -32,7 +32,7 @@ class _LoginpageState extends State<Loginpage> {
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
       final user = await Firebaseauth.signInWithCredential(cred);
       print(user);
-      // print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
+      print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
     } catch (e) {
       print(e);
     }
@@ -57,11 +57,11 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                 ),
                 SizedBox(
-                  height: 100,
+                  height: 120,
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 10),
-                  height: 55,
+                  height: 60,
                   width: 350,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -86,7 +86,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 10),
-                  height: 55,
+                  height: 60,
                   width: 350,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -139,7 +139,7 @@ class _LoginpageState extends State<Loginpage> {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 50,
             ),
             Container(
               margin: EdgeInsets.only(left: 74, right: 75),

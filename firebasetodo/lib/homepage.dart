@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -13,7 +14,9 @@ class _HomepageState extends State<Homepage> {
   final CollectionReference Todos =
       FirebaseFirestore.instance.collection("Todos");
 //  List<dynamic>ls=["hy","hello","hai"];
-
+  Future display() async {
+    await FirebaseAuth.instance.signOut();
+  }
 
   void addTodo() {
     final data = {'Task': _task.text};
@@ -26,7 +29,7 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(child: Text("HOMEPAGE"),),
+        title: Center(child: Text("HOMEPAGE")),
       ),
       body: Column(
         children: [
@@ -48,6 +51,16 @@ class _HomepageState extends State<Homepage> {
                       },
                       child: Text("ADD")),
                 ),
+                Container(
+                  child: TextButton(
+                      onPressed: () {
+                        display();
+                      },
+                      child: Text(
+                        "signout",
+                        style: TextStyle(fontSize: 20),
+                      )),
+                )
               ],
             ),
           ),
@@ -71,7 +84,6 @@ class _HomepageState extends State<Homepage> {
                       ];
                       Navigator.pushNamed(context, "update", arguments: ls);
                     },
-                   
                   );
                 },
               );
