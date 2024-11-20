@@ -13,31 +13,7 @@ class _LoginpageState extends State<Loginpage> {
   bool ischeck = false;
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
-  final CollectionReference Usr =
-      FirebaseFirestore.instance.collection("user");
-
-  Future signin() async {
-    UserCredential user = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-            email: _email.text.trim(), password: _password.text.trim());
-
-    print("//////////////////////////////////////////////////////////////////");
-    print(user.user!.uid);
-    print(user.user!.displayName);
-
-    
-    var usname = user.user!.uid;
-    var uid = user.user!.displayName;
-    // final userid = {"userid": uid, "username": usname};
-    adduser(uid, usname);
-  }
-   Future adduser(userid,username)async{
-        QuerySnapshot querySnapshot = await Usr.where('userid',isEqualTo: userid).get();
-
-        if(querySnapshot.docs.isEmpty){
-          Usr.add({"userid":userid,"username":username});
-        }
-      }
+  
 
   @override
   Widget build(BuildContext context) {

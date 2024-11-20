@@ -12,7 +12,7 @@ class Users extends StatefulWidget {
 }
 
 class _UsersState extends State<Users> {
-  List<Map<String, dynamic>> usersList = [];
+  List<Map<String, dynamic>> ls = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -21,18 +21,24 @@ class _UsersState extends State<Users> {
   }
 
   void getUsers() async {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-    QuerySnapshot querySnapshot = await users.get();
+    CollectionReference user = FirebaseFirestore.instance.collection('user');
+    QuerySnapshot querySnapshot = await user.get();
     setState(() {
-      usersList = querySnapshot.docs
+      ls = querySnapshot.docs
           .map((doc) =>
               doc.data() as Map<String, dynamic>) 
           .toList();
     });
-    print(usersList);
+    print(ls);
+  }
+  void initstate(){
+    super.initState();
+    getUsers();
   }
 
+
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -40,23 +46,24 @@ class _UsersState extends State<Users> {
           child: Text("Userslist"),
         ),
       ),
-      body: usersList.isEmpty
+      body: ls.isEmpty
           ? Center(
               child:
                   CircularProgressIndicator())
           : ListView.builder(
-              itemCount: usersList.length,
+              itemCount: 
+              ls.length,
               itemBuilder: (context, index) {
                
-                var user = usersList[index];
+                var user = ls[index];
                 return ListTile(
                   title: Text(user['username'] ??
                       'No User Name'),           
-                  onTap: () {
-                    print('Tapped on ${user['userid']}');
-                    Provider.of(context, listen: false).setSid(user['userid'] ?? '');
-                    print(Provider.of(context, listen: false).uid);
-                  },
+                  // onTap: () {
+                  //   print('Tapped on ${user['userid']}');
+                  //   Provider.of(context, listen: false).setSid(user['userid'] ?? '');
+                  //   print(Provider.of(context, listen: false).uid);
+                  // },
                 );
               },
             ),

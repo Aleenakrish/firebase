@@ -29,8 +29,8 @@ class _SignuppageState extends State<Signuppage> {
           await googleUser?.authentication;
       final cred = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-      final user = await Firebaseauth.signInWithCredential(cred);
-      print(user);
+      final User = await Firebaseauth.signInWithCredential(cred);
+      print(User);
       print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
     } catch (e) {
       print(e);
