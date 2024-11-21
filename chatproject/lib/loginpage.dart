@@ -17,59 +17,40 @@ class _LoginpageState extends State<Loginpage> {
   bool ischeck = false;
    TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
- 
-  final user = Hive.box("mybox");
+ final CollectionReference Usr = FirebaseFirestore.instance.collection("user");
+  void signin() async {
+    UserCredential user = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: _email.text.trim(), password: _password.text.trim());
+    print("=========================================================");
+    print(user.user!.uid);
+    print(user.user!.displayName);
+    print("=========================================================");
+    var uname = user.user!.uid;
+    var uid = user.user!.displayName;
+    // final userid = {
+    //   "userid": uid,
+    //   "username": uname
+    // };
+    // Usr.add(userid);
+    adduse(uid, uname);
+    Provider.of<Prov>(context,listen: false).setUid(user.user!.uid ?? "");
+    print("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    print(Provider.of<Prov>(context,listen: false).uid);
+    
+  }
 
-  final CollectionReference usr =
-      FirebaseFirestore.instance.collection("user");
-  Future addUser(userid, username) async {
+  void adduse(userid, username) async {
     QuerySnapshot querySnapshot =
-        await usr.where("userid", isEqualTo: userid).get();
+        await Usr.where("userid", isEqualTo: userid).get();
     if (querySnapshot.docs.isEmpty) {
-      usr.add({"userid": userid, "username": username});
+      Usr.add({"userid": userid, "username": username});
     }
   }
 
-  Future signin() async {
-    try {
-      UserCredential users = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email.text, password: _password.text);
-      
-      Provider.of<Prov>(context, listen: false)
-          .setUid(users.user?.uid ?? '');
-          
-      print("==============================================================");
-      print(Provider.of<Prov>(context,listen: false).uid);
-      print("=================================================");
-      addUser(users.user?.uid, users.user?.displayName);
-      final mp = {
-        "id": users.user?.uid,
-      };
+  
 
-      user.put(1, mp);
-      print("==============================================================");
-      print(user.get(1));
-      print("==============================================================");
-    } catch (e) {
-      print("Sign-in error:$e");
-     
-    }
-  }
-
-  Future signinWithGoogle() async {
-    try {
-      final firebaseAuth = await FirebaseAuth.instance;
-      final googleservice = await GoogleSignIn();
-      final googleUser = await googleservice.signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-      final cred = GoogleAuthProvider.credential(
-          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-      final user = await firebaseAuth.signInWithCredential(cred);
-    } catch (e) {
-      print(e);
-    }
-  }
+  
 
   Future<dynamic> signIn() async {}
   @override

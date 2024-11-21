@@ -1,6 +1,9 @@
+import 'package:chatproject/provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
 class Signuppage extends StatefulWidget {
   const Signuppage({super.key});
@@ -13,28 +16,46 @@ class _SignuppageState extends State<Signuppage> {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _cpassword = TextEditingController();
+  final CollectionReference Usr = FirebaseFirestore.instance.collection("user");
 
   Future signup() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _email.text.trim(), password: _password.text.trim());
   }
 
-  Future signinwithgoogle() async {
-    print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
-    try {
-      final Firebaseauth = await FirebaseAuth.instance;
-      final googleService = await GoogleSignIn();
-      final googleUser = await googleService.signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-      final cred = GoogleAuthProvider.credential(
-          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-      final User = await Firebaseauth.signInWithCredential(cred);
-      print(User);
-      print("oooooooooooooooooooooooooooooooooooooooooooooooooooo");
-    } catch (e) {
-      print(e);
+  void adduse(userid, username) async {
+    QuerySnapshot querySnapshot =
+        await Usr.where("userid", isEqualTo: userid).get();
+    if (querySnapshot.docs.isEmpty) {
+      Usr.add({"userid": userid, "username": username});
     }
+  }
+
+  void googlesignin() async {
+    final firebaseauth = await FirebaseAuth.instance;
+    final googleservice = await GoogleSignIn();
+    final googleuser = await googleservice.signIn();
+    final GoogleSignInAuthentication? auth = await googleuser?.authentication;
+    final cred = GoogleAuthProvider.credential(
+        accessToken: auth?.accessToken, idToken: auth?.idToken);
+    final person = firebaseauth.signInWithCredential(cred);
+    print(
+        "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    print(googleuser!.id);
+    print(googleuser!.displayName);
+    print(
+        "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    var Uid = googleuser!.id;
+    var uname = googleuser!.displayName;
+    // final userid = {"userid": uid, "username": uname};
+    // Usr.add(userid);
+
+    adduse(Uid, uname);
+
+    Provider.of<Prov>(context,listen: false).setUid(Uid ?? "");
+    print("tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
+    print(Provider.of<Prov>(context,listen: false).uid);
+    print("-------------------------------------------------------------------------------------");
   }
 
   @override
@@ -219,7 +240,7 @@ class _SignuppageState extends State<Signuppage> {
                     ),
                     child: TextButton(
                         onPressed: () {
-                          signinwithgoogle();
+                          googlesignin();
                         },
                         child: ClipRRect(
                           child: Image.asset(

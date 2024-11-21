@@ -14,18 +14,22 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 160, 216, 161),
         title: Container(
           child: Icon(
             Icons.window,
             size: 30,
             color: Colors.white,
           ),
+          
+          
         ),
         actions: [
           Container(
             child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // Container(child: Text("Chats"),),
                 IconButton(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
@@ -40,8 +44,9 @@ class _HomepageState extends State<Homepage> {
           )
         ],
       ),
-      backgroundColor: const Color.fromARGB(255, 231, 252, 232),
+      backgroundColor: Colors.white,
       body: Container(
+        
         child: ListView(
           children: [
             // Row(
@@ -61,11 +66,11 @@ class _HomepageState extends State<Homepage> {
             //   ],
             // )
             Container(
-              height: 50,
-              width: 100,
-              margin: EdgeInsets.only(left: 270, right: 10, top: 400),
+              height: 60,
+              width: 70,
+              margin: EdgeInsets.only(left: 290, right: 10, top: 620),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.green),
+                  borderRadius: BorderRadius.circular(10), color:  const Color.fromARGB(255, 160, 216, 161)),
               child: MaterialButton(
                   onPressed: () {
                     Navigator.pushNamed(context, "userlist");
