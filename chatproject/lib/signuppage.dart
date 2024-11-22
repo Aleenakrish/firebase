@@ -53,7 +53,7 @@ class _SignuppageState extends State<Signuppage> {
     adduse(Uid, uname);
 
     Provider.of<Prov>(context,listen: false).setUid(Uid ?? "");
-    print("tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
+    print("----------------------------------------------------------------------------------");
     print(Provider.of<Prov>(context,listen: false).uid);
     print("-------------------------------------------------------------------------------------");
   }
@@ -168,11 +168,11 @@ class _SignuppageState extends State<Signuppage> {
                   ]),
               child: TextButton(
                   onPressed: () {
-                    // if (_password.text == _cpassword.text) {
+                    if (_password.text == _cpassword.text) {
                     signup();
-                    //     } else {
-                    //       print("incorrect");
-                    //     }
+                        } else {
+                          print("incorrect");
+                        }
                   },
                   child: Text(
                     "SIGN UP",

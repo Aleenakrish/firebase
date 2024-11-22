@@ -1,5 +1,6 @@
 import 'package:chatproject/chatpage.dart';
 import 'package:chatproject/firebase_options.dart';
+import 'package:chatproject/homepage.dart';
 import 'package:chatproject/loginpage.dart';
 import 'package:chatproject/mainpage.dart';
 import 'package:chatproject/paswrd.dart';
@@ -30,7 +31,8 @@ void main() async {
       "paswrd": (context) => Paswrd(),
       "userlist":(context)=>Users(),
       "mainpage":(context)=>Mainpage(),
-      "chatpage":(context)=>Chatpage()
+      "chatpage":(context)=>ChatPage(),
+      "homepage":(context)=>Homepage()
     },
     )
   ));

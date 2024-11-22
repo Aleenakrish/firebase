@@ -90,7 +90,7 @@ class _UsersState extends State<Users> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
                                     color:
-                                        const Color.fromARGB(255, 229, 234, 238),
+                                        const Color.fromARGB(255, 221, 238, 222),
                                   ),
                                   child: Icon(Icons.person,color: Colors.grey,size: 30,),
                                 ),
