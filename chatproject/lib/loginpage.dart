@@ -14,45 +14,45 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
-  bool ischeck = false;
-   TextEditingController _email = TextEditingController();
-  TextEditingController _password = TextEditingController();
- final CollectionReference Usr = FirebaseFirestore.instance.collection("user");
-  void signin() async {
-    UserCredential user = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-            email: _email.text.trim(), password: _password.text.trim());
-    print("=========================================================");
-    print(user.user!.uid);
-    print(user.user!.displayName);
-    print("=========================================================");
-    var uname = user.user!.uid;
-    var uid = user.user!.displayName;
-    // final userid = {
-    //   "userid": uid,
-    //   "username": uname
-    // };
-    // Usr.add(userid);
-    adduse(uid, uname);
-    Provider.of<Prov>(context,listen: false).setUid(user.user!.uid ?? "");
-    print("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
-    print(Provider.of<Prov>(context,listen: false).uid);
+//   bool ischeck = false;
+//    TextEditingController _email = TextEditingController();
+//   TextEditingController _password = TextEditingController();
+//  final CollectionReference Usr = FirebaseFirestore.instance.collection("user");
+//   void signin() async {
+//     UserCredential user = await FirebaseAuth.instance
+//         .signInWithEmailAndPassword(
+//             email: _email.text.trim(), password: _password.text.trim());
+//     print("=========================================================");
+//     print(user.user!.uid);
+//     print(user.user!.displayName);
+//     print("=========================================================");
+//     var uname = user.user!.uid;
+//     var uid = user.user!.displayName;
+//     // final userid = {
+//     //   "userid": uid,
+//     //   "username": uname
+//     // };
+//     // Usr.add(userid);
+//     adduse(uid, uname);
+//     Provider.of<Prov>(context,listen: false).setUid(user.user!.uid ?? "");
+//     print("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+//     print(Provider.of<Prov>(context,listen: false).uid);
     
-  }
+//   }
 
-  void adduse(userid, username) async {
-    QuerySnapshot querySnapshot =
-        await Usr.where("userid", isEqualTo: userid).get();
-    if (querySnapshot.docs.isEmpty) {
-      Usr.add({"userid": userid, "username": username});
-    }
-  }
-
-  
+//   void adduse(userid, username) async {
+//     QuerySnapshot querySnapshot =
+//         await Usr.where("userid", isEqualTo: userid).get();
+//     if (querySnapshot.docs.isEmpty) {
+//       Usr.add({"userid": userid, "username": username});
+//     }
+//   }
 
   
 
-  Future<dynamic> signIn() async {}
+  
+
+//   Future<dynamic> signIn() async {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +92,7 @@ class _LoginpageState extends State<Loginpage> {
                         color: Colors.grey, blurRadius: 5, offset: Offset(5, 5))
                   ]),
               child: TextField(
-                controller: _email,
+                // controller: _email,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Email",
@@ -112,7 +112,7 @@ class _LoginpageState extends State<Loginpage> {
                         color: Colors.grey, blurRadius: 5, offset: Offset(5, 5))
                   ]),
               child: TextField(
-                controller: _password,
+                // controller: _password,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: "Password",
@@ -121,17 +121,17 @@ class _LoginpageState extends State<Loginpage> {
             ),
             Row(
               children: [
-                Container(
-                  margin: EdgeInsets.only(left: 20, top: 10),
-                  child: Checkbox(
-                    value: ischeck,
-                    onChanged: (value) {
-                      setState(() {
-                        ischeck = !ischeck;
-                      });
-                    },
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.only(left: 20, top: 10),
+                //   child: Checkbox(
+                //     value: ischeck,
+                //     onChanged: (value) {
+                //       setState(() {
+                //         ischeck = !ischeck;
+                //       });
+                //     },
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.only(top: 10),
                   child: Text("Show Password"),
@@ -165,7 +165,7 @@ class _LoginpageState extends State<Loginpage> {
                   ]),
               child: TextButton(
                   onPressed: () {
-                    signin();
+                    // signin();
                   },
                   child: Text(
                     "SIGNIN",

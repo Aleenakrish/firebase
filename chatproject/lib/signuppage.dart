@@ -18,45 +18,45 @@ class _SignuppageState extends State<Signuppage> {
   TextEditingController _cpassword = TextEditingController();
   final CollectionReference Usr = FirebaseFirestore.instance.collection("user");
 
-  Future signup() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _email.text.trim(), password: _password.text.trim());
-  }
+  // Future signup() async {
+  //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  //       email: _email.text.trim(), password: _password.text.trim());
+  // }
 
-  void adduse(userid, username) async {
-    QuerySnapshot querySnapshot =
-        await Usr.where("userid", isEqualTo: userid).get();
-    if (querySnapshot.docs.isEmpty) {
-      Usr.add({"userid": userid, "username": username});
-    }
-  }
+  // void adduse(userid, username) async {
+  //   QuerySnapshot querySnapshot =
+  //       await Usr.where("userid", isEqualTo: userid).get();
+  //   if (querySnapshot.docs.isEmpty) {
+  //     Usr.add({"userid": userid, "username": username});
+  //   }
+  // }
 
-  void googlesignin() async {
-    final firebaseauth = await FirebaseAuth.instance;
-    final googleservice = await GoogleSignIn();
-    final googleuser = await googleservice.signIn();
-    final GoogleSignInAuthentication? auth = await googleuser?.authentication;
-    final cred = GoogleAuthProvider.credential(
-        accessToken: auth?.accessToken, idToken: auth?.idToken);
-    final person = firebaseauth.signInWithCredential(cred);
-    print(
-        "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    print(googleuser!.id);
-    print(googleuser!.displayName);
-    print(
-        "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    var Uid = googleuser!.id;
-    var uname = googleuser!.displayName;
-    // final userid = {"userid": uid, "username": uname};
-    // Usr.add(userid);
+  // void googlesignin() async {
+  //   final firebaseauth = await FirebaseAuth.instance;
+  //   final googleservice = await GoogleSignIn();
+  //   final googleuser = await googleservice.signIn();
+  //   final GoogleSignInAuthentication? auth = await googleuser?.authentication;
+  //   final cred = GoogleAuthProvider.credential(
+  //       accessToken: auth?.accessToken, idToken: auth?.idToken);
+  //   final person = firebaseauth.signInWithCredential(cred);
+  //   print(
+  //       "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+  //   print(googleuser!.id);
+  //   print(googleuser!.displayName);
+  //   print(
+  //       "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+  //   var Uid = googleuser!.id;
+  //   var uname = googleuser!.displayName;
+  //   // final userid = {"userid": uid, "username": uname};
+  //   // Usr.add(userid);
 
-    adduse(Uid, uname);
+  //   adduse(Uid, uname);
 
-    Provider.of<Prov>(context,listen: false).setUid(Uid ?? "");
-    print("----------------------------------------------------------------------------------");
-    print(Provider.of<Prov>(context,listen: false).uid);
-    print("-------------------------------------------------------------------------------------");
-  }
+  //   Provider.of<Prov>(context,listen: false).setUid(Uid ?? "");
+  //   print("----------------------------------------------------------------------------------");
+  //   print(Provider.of<Prov>(context,listen: false).uid);
+  //   print("-------------------------------------------------------------------------------------");
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +169,7 @@ class _SignuppageState extends State<Signuppage> {
               child: TextButton(
                   onPressed: () {
                     if (_password.text == _cpassword.text) {
-                    signup();
+                    // signup();
                         } else {
                           print("incorrect");
                         }
@@ -240,7 +240,7 @@ class _SignuppageState extends State<Signuppage> {
                     ),
                     child: TextButton(
                         onPressed: () {
-                          googlesignin();
+                          // googlesignin();
                         },
                         child: ClipRRect(
                           child: Image.asset(
