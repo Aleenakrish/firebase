@@ -45,4 +45,18 @@ class Appwriteservice {
       
     }
   }
+
+   Future<Document> updateListStatus(String documentId, bool active) async {
+    try {
+      final result = await databases.updateDocument(
+          databaseId: databaseId,
+          collectionId: collectionId,
+          documentId: documentId,
+          data: {"isActive": active});
+      return result;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
 }

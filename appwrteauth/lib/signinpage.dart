@@ -1,3 +1,5 @@
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrteauth/services/appwriteservices.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -8,6 +10,22 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
+  TextEditingController _controller=TextEditingController();
+  
+
+  Future<void>signup()async{
+  print("???????????????????????????????????????????????????????");
+  final email = _controller.text;
+  final password=_controller.text;
+  if(email.isNotEmpty){
+    try {
+      // await 
+    } catch (e) {
+      print(e);
+    }
+  }
+
+ }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

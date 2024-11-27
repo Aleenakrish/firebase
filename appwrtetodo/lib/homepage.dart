@@ -1,4 +1,6 @@
-import 'package:appwrite/models.dart';
+import 'dart:io';
+
+import 'package:appwrtetodo/Todo.dart';
 import 'package:appwrtetodo/services/appwriteservice.dart';
 import 'package:flutter/material.dart';
 
@@ -10,110 +12,155 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  List ls = ["Ak"];
-  TextEditingController _controller = TextEditingController();
-  late Appwriteservice _appwriteService;
-  List? _task;
+  late Appwriteservice _appwriteservice;
+  List? _Employee;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _appwriteservice = Appwriteservice();
+    _Employee = [];
+    _loadTask();
+  }
+
+  Future<void> _loadTask() async {
+    try {
+      final employee = await _appwriteservice.getTask();
+      setState(() {
+        _Employee = employee.map((e) => Task.formDocument(e)).toList();
+        print("**************************");
+        print(_Employee);
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> _updateTask(task) async {
+    try {
+      final updatetask =
+          await _appwriteservice.updateListStatus(task.id, !task.isActive);
+      setState(() {
+        task.isActive != updatetask.data["active"];
+        _loadTask();
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Center(child: Text("HOMEPAGE")),
         backgroundColor: Colors.white,
+        title: Center(
+          child: Text(
+            "Employees",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        actions: [],
       ),
+      backgroundColor: Colors.white,
       body: Container(
-        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Expanded(
-            child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          child: GridView.builder(
+            padding: EdgeInsets.only(left: 10, right: 10, top: 30),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 3 / 3.5,
               crossAxisCount: 2,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5,
-              childAspectRatio: 3 / 3.9),
-          itemCount: ls.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: Container(
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+            itemCount: _Employee!.length,
+            itemBuilder: (context, index) {
+              return Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.red,
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 5,
-                          color: const Color.fromARGB(255, 226, 226, 226)),
-                    ]),
+                  borderRadius: BorderRadius.circular(10),
+                  color: _Employee![index].isActive
+                      ? const Color.fromARGB(255, 66, 165, 69)
+                      : const Color.fromARGB(255, 190, 30, 19),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 5,
+                      color: Colors.grey,
+                      spreadRadius: 0,
+                    ),
+                  ],
+                ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      height: 90,
-                      width: 90,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 3,
-                                color: const Color.fromARGB(255, 216, 215, 215))
-                          ]),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.person,
-                            size: 40,
-                            color: Colors.grey,
-                          )),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          ls[index].toString(),
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      height: 1,
-                      padding: EdgeInsets.only(left: 5, right: 5),
-                      child: Divider(),
-                    ),
                     SizedBox(
                       height: 20,
                     ),
                     Container(
-                      height: 40,
-                      width: 100,
+                      width: 70,
+                      height: 70,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green),
-                      child: Center(
-                          child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "ACTIVATE",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ))),
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.white,
+                      ),
+                      child: Icon(
+                        Icons.person,
+                        size: 30,
+                      ),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Name :",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          _Employee![index].name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _updateTask(_Employee![index]);
+                      },
+                      child: Container(
+                        width: 130,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: _Employee![index].isActive
+                              ? const Color.fromARGB(255, 184, 48, 38)
+                              : const Color.fromARGB(255, 57, 134, 59),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            _Employee![index].isActive
+                                ? "Deactivate"
+                                : "Activate",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
-              ),
-            );
-          },
-        )),
+              );
+            },
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 241, 240, 241),

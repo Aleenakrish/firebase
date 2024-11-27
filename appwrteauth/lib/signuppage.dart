@@ -1,3 +1,4 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 
 class Signuppage extends StatefulWidget {
@@ -8,6 +9,7 @@ class Signuppage extends StatefulWidget {
 }
 
 class _SignuppageState extends State<Signuppage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

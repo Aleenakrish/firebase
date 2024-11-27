@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:appwrtetodo/Todo.dart';
 import 'package:appwrtetodo/services/appwriteservice.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Cardpage extends StatefulWidget {
   const Cardpage({super.key});
@@ -14,146 +13,194 @@ class Cardpage extends StatefulWidget {
 }
 
 class _CardpageState extends State<Cardpage> {
-  TextEditingController _controller = TextEditingController();
-  late Appwriteservice _appwriteservices;
-  List? _task;
+  TextEditingController add = TextEditingController();
+  late Appwriteservice _appwriteSevices;
   File? _image;
-  Uint8List? pic;
-  List ls = [];
-
+  final ImagePicker _picker = ImagePicker();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _appwriteservices = Appwriteservice();
-    _loadTasks();
-    _task = [];
+    _appwriteSevices = Appwriteservice();
   }
 
-  Future<void> _loadTasks() async {
-    try {
-      final tasks = await _appwriteservices.getTask();
-      setState(() {
-        _task = tasks.map((e) => Task.formDocument(e)).toList();
-        // ,
-        print("###############################################");
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<void> _addTask() async {
-    print("////////////////////////////////////////");
-    //  print();
-    final employee = _controller.text;
-    final bytes = await _image!.readAsBytesSync();
-    final base64Img = base64Encode(bytes);
-    if (employee.isNotEmpty) {
+  Future<void> addEmployee() async {
+    final bytes = await _image!.readAsBytes();
+    final base64img = base64Encode(bytes);
+    final task = add.text;
+    if (task.isNotEmpty) {
       try {
-        await _appwriteservices.addTask(employee, base64Img);
+        print("===============================");
+        await _appwriteSevices.addTask(task, base64img);
+        add.clear();
       } catch (e) {
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         print(e);
       }
     }
-    _controller.clear();
-    _loadTasks();
+  }
+
+  void pickImg() async {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            title: Text(
+              "Choose any?",
+              style: TextStyle(color: Colors.green),
+            ),
+            actions: [
+              TextButton(
+                onPressed: gallery,
+                child: Text("Gallery", style: TextStyle(color: Colors.green)),
+              ),
+              TextButton(
+                onPressed: camera,
+                child: Text("Camera", style: TextStyle(color: Colors.green)),
+              ),
+            ],
+          );
+        });
+  }
+
+  void gallery() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+        Navigator.pop(context);
+      } else {
+        print("error!");
+      }
+    });
+  }
+
+  void camera() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+        Navigator.pop(context);
+      } else {
+        print("error!");
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 241, 241, 241),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 247, 246, 246),
+        iconTheme: IconThemeData(color: Colors.grey),
       ),
-      backgroundColor: Colors.white,
-      body: Container(
-        child: ListView(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Card(
-              margin: EdgeInsets.only(top: 50, left: 10, right: 10),
-              color: Colors.white,
-              child: GestureDetector(
-                child: Container(
-                  height: 500,
+            GestureDetector(
+                onTap: pickImg,
+                child: Center(
+                  child: ClipOval(
+                    child: _image != null
+                        ? Image.file(
+                            _image!,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          )
+                        : Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(blurRadius: 10, color: Colors.grey)
+                                ]),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.grey,
+                              size: 50,
+                            ),
+                          ),
+                  ),
+                )),
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * .8,
+              padding: EdgeInsets.only(left: 20),
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 5,
+                    color: Colors.grey,
+                    // offset: Offset(5, 5),
+                    // spreadRadius: 0
+                  ),
+                ],
+              ),
+              child: TextField(
+                controller: add,
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Name",
+                    hintStyle: TextStyle(color: Colors.black)),
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 150,
+                  height: 50,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 5,
-                            color: Colors.grey,
-                            blurStyle: BlurStyle.outer)
-                      ]),
-                  child: Column(
-                    children: [
-                      Container(
-                          margin: EdgeInsets.only(top: 15),
-                          height: 130,
-                          width: 130,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(blurRadius: 5, color: Colors.grey)
-                              ]),
-                          child: ClipOval(child: Image.memory(pic=base64Decode(ls[index])),)),////
-                      Container(
-                        margin: EdgeInsets.only(left: 10, right: 10, top: 30),
-                        height: 65,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(blurRadius: 5, color: Colors.grey)
-                            ]),
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: TextField(
-                                controller: _controller,
-                                decoration:
-                                    InputDecoration(border: InputBorder.none),
-                              ),
-                            )),
-                            Container(
-                              padding: EdgeInsets.only(right: 10),
-                              child: Icon(
-                                Icons.person,
-                                size: 30,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 70,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 150),
-                        height: 55,
-                        width: 120,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(blurRadius: 5, color: Colors.grey)
-                            ]),
-                        child: TextButton(
-                            onPressed: () {
-                              _addTask();
-                            },
-                            child: Text(
-                              "SUBMIT",
-                              style: TextStyle(color: Colors.black),
-                            )),
-                      )
-                    ],
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "homepage", (route) => false);
+                    },
+                    child: Text(
+                      "CANCEL",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(
+                  width: 40,
+                ),
+                Container(
+                  width: 150,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white),
+                  child: TextButton(
+                    onPressed: () {
+                      addEmployee();
+                      // Navigator.pushNamedAndRemoveUntil(
+                      //     context, "first", (route) => false);
+                    },
+                    child: Text(
+                      "ADD",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),
